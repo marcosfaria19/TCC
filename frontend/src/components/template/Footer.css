@@ -1,0 +1,59 @@
+/* Estilização do footer */
+.footer {
+  background-color: #000;
+  color: #fff;
+  padding: 30px 0;
+  font-size: 14px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo img {
+  max-width: 150px;
+}
+
+.footer-links ul,
+.footer-social ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.footer-links a,
+.footer-social a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+  color: #ff5500;
+}
+
+.footer-copyright {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Estilos para ícones (utilize ícones reais conforme necessário) */
+.bi {
+  font-size: 24px;
+}

@@ -1,0 +1,27 @@
+header.header {
+  padding: 0px 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+}
+
+i.bi {
+  font-size: 1.2rem;
+}
+
+img.logo {
+  width: 4rem;
+}
+
+/* Define o ícone do coração no hover e no estado normal */
+.btn-heart:hover i::before {
+  content: "\F415"; /* Código do ícone heart-fill do Bootstrap Icons */
+  color: Red;
+  transform: scale(1.05);
+  transition: color 1s ease, transform 0.2s ease;
+}
+
+.btn-heart i::before {
+  content: "\F415"; /* Código do ícone heart do Bootstrap Icons */
+  color: white;
+}
