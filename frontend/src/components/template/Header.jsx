@@ -1,11 +1,11 @@
 import React from "react";
-import "./Header.css";
 import logo from "../../assets/logo.png";
+import "./Header.css";
 
 function Header() {
   return (
-    <header className="header bg-primary py-2">
-      <div className="container d-flex justify-content-between align-items-center">
+    <header className="header py-2 m-b-0 border_b_orange">
+      <div className="d-flex justify-content-between align-items-center">
         {/* Logo */}
         <a
           className="logo"
@@ -19,7 +19,7 @@ function Header() {
 
         <div>
           {/* Botão de Favoritos (ícone de coração) */}
-          <button className="btn btn-primary btn-heart">
+          <button className="btn btn-heart">
             <i className="bi bi-heart"></i>
           </button>
 
@@ -31,5 +31,4 @@ function Header() {
     </header>
   );
 }
-
 export default Header;

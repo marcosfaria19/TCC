@@ -1,23 +1,59 @@
-import React from "react";
 import "./Home.css";
+import MainButton from "../components/template/Button";
+import CustomCard from "../components/template/Card";
 
 function Home() {
   return (
     <div className="home">
-      <section className="hero">
-        <div className="container">
-          <h1 className="hero-title">Encontre seu amigo peludo</h1>
-          <p className="hero-description">
+      <section className="menu">
+        <div className="menu-container">
+          <h1 className="title">Encontre seu amigo peludo</h1>
+          <p className="description">
             Adote um animal de estimação hoje e transforme uma vida para sempre.
           </p>
-          <button className="btn btn-primary hero-button">Ver Animais</button>
+          <ul className="menu-list">
+            <li>
+              <MainButton text="Procurar" />
+            </li>
+            <li>
+              <MainButton text="Ajudar" />
+            </li>
+            <li>
+              <MainButton text="FAQ" />
+            </li>
+          </ul>
         </div>
       </section>
 
-      <section className="featured-animals">
-        <div className="container">
-          <h2 className="section-title">Animais em Destaque</h2>
-          {/* Inclua aqui a lista de animais em destaque */}
+      <section className="faq">
+        <div className="faq-container">
+          <h2 className="section-title">Planejando adotar um pet?</h2>
+          <div className="faq-cards row">
+            <CustomCard
+              title="Escolha seu amigo"
+              text="Explore nossa galeria de amigos peludos! De ronrons a abanadas de rabo, você está prestes a se apaixonar. "
+            />
+            <CustomCard
+              title="Conheça os requisitos"
+              text="Saiba o que é necessário para dar um lar ao seu novo melhor amigo"
+            />
+            <CustomCard
+              title="Preencha o formulário"
+              text="Conte-nos por que você é a pessoa perfeita para dar um lar cheio de carinho"
+            />
+            <CustomCard
+              title="Aguarde a validação"
+              text="Conte-nos por que você é a pessoa perfeita para dar um lar cheio de carinho"
+            />
+            <CustomCard
+              title="Resposta"
+              text="Conte-nos por que você é a pessoa perfeita para dar um lar cheio de carinho"
+            />
+            <CustomCard
+              title="Entrega"
+              text="Conte-nos por que você é a pessoa perfeita para dar um lar cheio de carinho"
+            />
+          </div>
         </div>
       </section>
     </div>

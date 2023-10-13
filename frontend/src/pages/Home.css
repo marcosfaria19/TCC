@@ -5,49 +5,93 @@
   font-size: 16px;
 }
 
-.container {
+.menu-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-.hero {
-  background-image: url("/path/to/hero-background.jpg"); /* Substitua pelo caminho da imagem de fundo do herói */
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  padding: 100px 0;
-  text-align: center;
+.title {
+  font-size: 48px;
+  margin-bottom: 50px;
 }
 
-.hero-title {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-.hero-description {
+.description {
   font-size: 18px;
   margin-bottom: 40px;
 }
 
-.hero-button {
-  background-color: #ff5500;
-  color: #fff;
-  font-size: 18px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.hero-button:hover {
-  background-color: #e44d00;
-}
-
 .section-title {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 36px;
+  text-align: center;
+  padding: 50px;
+  margin: 50px 0 0 0;
 }
 
-/* Estilos adicionais conforme necessário */
+.menu-list {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+  list-style: none;
+}
+
+.menu {
+  background-size: cover;
+  background-position: 0 35%;
+  color: #fff;
+  padding: 200px 0;
+  text-align: center;
+  animation: rotateBackground 15s linear infinite;
+}
+
+@keyframes rotateBackground {
+  0%,
+  100% {
+    background-image: url("../assets/background4.jpg");
+  }
+  50% {
+    background-image: url("../assets/background3.jpg");
+  }
+}
+
+/* Media query para tela menor (max-width: 768px) */
+@media (max-width: 768px) {
+  .menu {
+    padding: 80px 0;
+    animation: none; /* Desliga a animação de rotação */
+    background-image: url("../assets/background4.jpg");
+    background-position: 50%;
+  }
+  .title {
+    font-size: 30px;
+  }
+  .description {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .menu-list {
+    flex-direction: column;
+    max-width: 100%;
+    align-items: center;
+  }
+}
+
+/* Media query para telas muito pequenas (max-width: 576px) */
+@media (max-width: 576px) {
+  .menu {
+    padding: 60px 0;
+  }
+}
+
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.faq-cards {
+  display: flex;
+  flex-direction: row;
+}
