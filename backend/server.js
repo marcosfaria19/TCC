@@ -3,8 +3,12 @@ const express = require("express");
 const mysql2 = require("mysql2");
 const userRoutes = require("./src/routes/userRoutes");
 const animalRoutes = require("./src/routes/animalRoutes");
+const authRoutes = require("./src/routes/authRoutes.js");
+const adocaoRoutes = require("./src/routes/adocaoRoutes");
+
 require("dotenv").config();
 
+// Inicializar o Express
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -27,11 +31,11 @@ db.connect((err) => {
 });
 app.set("db", db);
 
-// Rotas para usuários
+// Rotas
 app.use("/users", userRoutes);
-
-// Rotas para animais
 app.use("/animais", animalRoutes);
+app.use("/auth", authRoutes);
+app.use("/adocoes", adocaoRoutes);
 
 app.listen(port, () => {
   console.log(`Servidor iniciado na porta ${port}`);

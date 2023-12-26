@@ -1,17 +1,117 @@
-// models/user.js
-const mongoose = require("mongoose");
+// usuario.js
+class User {
+  constructor(nome, email, senha, cpf, telefone, endereco, idade) {
+    this.nome = nome;
+    this.email = email;
+    this.senha = senha;
+    this.cpf = cpf;
+    this.telefone = telefone;
+    this.endereco = endereco;
+    this.idade = idade;
+  }
 
-const userSchema = new mongoose.Schema({
-  nome: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  senha: { type: String, required: true },
-  cpf: { type: String, required: true, unique: true },
-  telefone: String,
-  endereco: String,
-  idade: Number,
-  // Adicione outros campos conforme necessário
-});
+  create(db, callback) {
+    const sql =
+      "INSERT INTO usuarios (nome, email, senha, cpf, telefone, endereco, idade) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    const values = [
+      this.nome,
+      this.email,
+      this.senha,
+      this.cpf,
+      this.telefone,
+      this.endereco,
+      this.idade,
+    ];
 
-const User = mongoose.model("User", userSchema);
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        console.error("Erro ao criar usuário:", err);
+        callback(err, null);
+      } else {
+        callback(null, result);
+      }
+    });
+  }
+
+  static getAll(db, callback) {
+    const sql = "SELECT * FROM usuarios";
+
+    db.query(sql, (err, result) => {
+      if (err) {
+        console.error("Erro ao obter usuários:", err);
+        callback(err, null);
+      } else {
+        callback(null, result);
+      }
+    });
+  }
+
+  static getById(db, id, callback) {
+    const sql = "SELECT * FROM usuarios WHERE id = ?";
+    const values = [id];
+
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        console.error("Erro ao obter usuário por ID:", err);
+        callback(err, null);
+      } else {
+        callback(null, result[0]); // Retorna o primeiro usuário encontrado
+      }
+    });
+  }
+
+  updateById(db, id, callback) {
+    const sql =
+      "UPDATE usuarios SET nome = ?, email = ?, senha = ?, cpf = ?, telefone = ?, endereco = ?, idade = ? WHERE id = ?";
+    const values = [
+      this.nome,
+      this.email,
+      this.senha,
+      this.cpf,
+      this.telefone,
+      this.endereco,
+      this.idade,
+      id,
+    ];
+
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        console.error("Erro ao atualizar usuário:", err);
+        callback(err, null);
+      } else {
+        callback(null, result);
+      }
+    });
+  }
+
+  static deleteById(db, id, callback) {
+    const sql = "DELETE FROM usuarios WHERE id = ?";
+    const values = [id];
+
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        console.error("Erro ao excluir usuário:", err);
+        callback(err, null);
+      } else {
+        callback(null, result);
+      }
+    });
+  }
+  // Adicione o seguinte método à classe Usuario
+
+  static getByEmailAndPassword(db, email, senha, callback) {
+    const sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?";
+    const values = [email, senha];
+
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        console.error("Erro ao obter usuário por e-mail e senha:", err);
+        callback(err, null);
+      } else {
+        callback(null, result[0]); // Retorna o primeiro usuário encontrado
+      }
+    });
+  }
+}
 
 module.exports = User;
