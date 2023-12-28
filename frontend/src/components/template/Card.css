@@ -1,0 +1,20 @@
+/* Card.css */
+
+.card {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 3rem; /* Ajuste o preenchimento para um valor apropriado */
+  max-width: 400px;
+  margin: 0 auto; /* Centralize horizontalmente os cards */
+  background-color: #f4f4f4; /* Adicione uma cor de fundo se necessário */
+}
+
+.card-title {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.card-text {
+  font-size: 16px;
+  margin: 20px 0;
+}

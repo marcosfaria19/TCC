@@ -1,0 +1,39 @@
+header.header {
+  padding: 0px 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+  background-color: #5a5b67;
+}
+
+i.bi {
+  font-size: 1.2rem;
+}
+
+header img.logo {
+  width: 70px;
+  padding: 5px;
+}
+
+.btn-heart:hover i::before {
+  content: "\F415"; /* Código do ícone heart-fill do Bootstrap Icons */
+  color: Red;
+  transform: scale(1.05);
+  transition: color 1s ease, transform 0.2s ease;
+}
+
+.btn-heart i::before {
+  content: "\F415"; /* Código do ícone heart do Bootstrap Icons */
+  color: white;
+}
+
+header button.btn {
+  background-color: transparent;
+  border: transparent;
+}
+
+header button.btn:hover {
+  background-color: transparent;
+  color: #d2bf96;
+  transition: color 0.3s ease;
+}

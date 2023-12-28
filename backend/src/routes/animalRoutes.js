@@ -3,6 +3,11 @@ const express = require("express");
 const router = express.Router();
 const Animal = require("../models/animal");
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> desenvolvimento-frontend
 // Rota para obter todos os animais
 router.get("/", (req, res) => {
   Animal.getAll(req.app.get("db"), (err, result) => {
@@ -61,6 +66,10 @@ router.put("/:id", (req, res) => {
 });
 
 // Rota para criar um novo animal
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> desenvolvimento-frontend
 router.post("/", (req, res) => {
   const animal = new Animal(
     req.body.nome,
@@ -70,7 +79,15 @@ router.post("/", (req, res) => {
     req.body.personalidade,
     req.body.saude
   );
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+  console.log(req.app.get("db"));
+=======
+
+>>>>>>> main
+>>>>>>> desenvolvimento-frontend
   animal.create(req.app.get("db"), (err, result) => {
     if (err) {
       res.status(500).json({ error: "Erro ao criar animal" });
@@ -80,6 +97,11 @@ router.post("/", (req, res) => {
   });
 });
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> desenvolvimento-frontend
 router.delete("/:id", (req, res) => {
   const animalId = req.params.id;
 
@@ -96,4 +118,8 @@ router.delete("/:id", (req, res) => {
   });
 });
 
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> desenvolvimento-frontend
 module.exports = router;
