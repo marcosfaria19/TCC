@@ -1,24 +1,4 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-// models/user.js
-const mongoose = require("mongoose");
-
-const userSchema = new mongoose.Schema({
-  nome: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  senha: { type: String, required: true },
-  cpf: { type: String, required: true, unique: true },
-  telefone: String,
-  endereco: String,
-  idade: Number,
-  // Adicione outros campos conforme necessário
-});
-
-const User = mongoose.model("User", userSchema);
-=======
->>>>>>> desenvolvimento-frontend
-// usuario.js
+// user.js
 class User {
   constructor(nome, email, senha, cpf, telefone, endereco, idade) {
     this.nome = nome;
@@ -117,25 +97,5 @@ class User {
       }
     });
   }
-  // Adicione o seguinte método à classe Usuario
-
-  static getByEmailAndPassword(db, email, senha, callback) {
-    const sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?";
-    const values = [email, senha];
-
-    db.query(sql, values, (err, result) => {
-      if (err) {
-        console.error("Erro ao obter usuário por e-mail e senha:", err);
-        callback(err, null);
-      } else {
-        callback(null, result[0]); // Retorna o primeiro usuário encontrado
-      }
-    });
-  }
 }
-<<<<<<< HEAD
-=======
->>>>>>> main
->>>>>>> desenvolvimento-frontend
-
 module.exports = User;

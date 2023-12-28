@@ -1,43 +1,8 @@
-<<<<<<< HEAD
-// usuarioRoutes.js
-=======
-<<<<<<< HEAD
-// routes/userRoutes.js
-=======
-// usuarioRoutes.js
->>>>>>> main
->>>>>>> desenvolvimento-frontend
+// Rota para registrar um novo usuário
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
+const User = require("../models/user");
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-// Rota para criar um novo usuário
-router.post("/usuarios", async (req, res) => {
-  try {
-    const newUser = await User.create(req.body);
-    res.status(201).json(newUser);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
-
-// Rota para obter todos os usuários
-router.get("/usuarios", async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-// Adicione outras rotas conforme necessário (atualização, exclusão, etc.)
-=======
->>>>>>> desenvolvimento-frontend
-// Rota para registrar um novo usuário
 router.post("/register", (req, res) => {
   const { nome, email, senha, cpf, telefone, endereco, idade } = req.body;
 
@@ -127,9 +92,5 @@ router.delete("/:id", (req, res) => {
     }
   });
 });
-<<<<<<< HEAD
-=======
->>>>>>> main
->>>>>>> desenvolvimento-frontend
 
 module.exports = router;
