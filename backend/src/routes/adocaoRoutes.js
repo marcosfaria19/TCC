@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const Adocao = require("../models/adocao");
 
+/* const authenticate = require("../middleware/authMiddleware"); */
+/* router.use(authenticate);  PARA REQUERER AUTENTICAÇÃO FIREBASE */
+
 // Rota para criar uma nova adoção
 router.post("/", (req, res) => {
   const adocao = new Adocao(
