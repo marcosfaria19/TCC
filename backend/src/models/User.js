@@ -1,4 +1,4 @@
-// user.js
+// usuario.js
 class User {
   constructor(nome, email, senha, cpf, telefone, endereco, idade) {
     this.nome = nome;
@@ -97,5 +97,22 @@ class User {
       }
     });
   }
+
+  // capacidade de fazer login
+
+  static getByEmailAndPassword(db, email, senha, callback) {
+    const sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?";
+    const values = [email, senha];
+
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        console.error("Erro ao obter usuário por e-mail e senha:", err);
+        callback(err, null);
+      } else {
+        callback(null, result[0]); // Retorna o primeiro usuário encontrado
+      }
+    });
+  }
 }
+
 module.exports = User;
