@@ -1,6 +1,7 @@
 // server.js
 const express = require("express");
 const mysql2 = require("mysql2");
+const cors = require("cors");
 
 const userRoutes = require("./src/routes/userRoutes");
 const animalRoutes = require("./src/routes/animalRoutes");
@@ -14,6 +15,7 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
 
 // Conectar ao banco de dados MySQL

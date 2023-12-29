@@ -41,6 +41,7 @@ router.put("/:id", (req, res) => {
     genero: req.body.genero,
     personalidade: req.body.personalidade,
     saude: req.body.saude,
+    imagemUrl: req.body.imagemUrl,
   };
 
   Animal.updateById(
@@ -69,7 +70,8 @@ router.post("/", (req, res) => {
     req.body.idade,
     req.body.genero,
     req.body.personalidade,
-    req.body.saude
+    req.body.saude,
+    req.body.imagemUrl
   );
 
   console.log(req.app.get("db"));

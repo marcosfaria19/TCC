@@ -1,23 +1,25 @@
 // animal.js
 class Animal {
-  constructor(nome, categoria, idade, genero, personalidade, saude) {
+  constructor(nome, categoria, idade, genero, personalidade, saude, imagemUrl) {
     this.nome = nome;
     this.categoria = categoria;
     this.idade = idade;
     this.genero = genero;
     this.personalidade = personalidade;
     this.saude = saude;
+    this.imagemUrl = imagemUrl;
   }
 
   create(db, callback) {
     const sql =
-      "INSERT INTO animais (nome, categoria, idade, genero, personalidade, saude) VALUES (?, ?, ?, ?, ?, ?)";
+      "INSERT INTO animais (nome, categoria, idade, genero, personalidade, saude, imagemUrl) VALUES (?, ?, ?, ?, ?, ?, ?)";
     const values = [
       this.nome,
       this.categoria,
       this.idade,
       this.genero,
       this.personalidade,
+      this.imagemUrl,
       JSON.stringify(this.saude),
     ];
 
@@ -59,13 +61,14 @@ class Animal {
 
   static updateById(db, id, updatedAnimal, callback) {
     const sql =
-      "UPDATE animais SET nome = ?, categoria = ?, idade = ?, genero = ?, personalidade = ?, saude = ? WHERE id = ?";
+      "UPDATE animais SET nome = ?, categoria = ?, idade = ?, genero = ?, personalidade = ?, saude = ?, imagemUrl = ? WHERE id = ?";
     const values = [
       updatedAnimal.nome,
       updatedAnimal.categoria,
       updatedAnimal.idade,
       updatedAnimal.genero,
       updatedAnimal.personalidade,
+      updatedAnimal.imagemUrl,
       JSON.stringify(updatedAnimal.saude),
       id,
     ];
