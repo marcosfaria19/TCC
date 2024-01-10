@@ -1,8 +1,19 @@
 import React from "react";
 import logo from "../../assets/logo.png";
+import { useNavigate } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    navigate("/login");
+  };
+
+  const handleRegistroClick = () => {
+    navigate("/registro");
+  };
+
   return (
     <header className="header py-2 m-b-0 border_b_orange">
       <div className="d-flex justify-content-between align-items-center">
@@ -16,19 +27,26 @@ function Header() {
             alt="Logo"
           />
         </a>
-
-        <div>
-          {/* Botão de Favoritos (ícone de coração) */}
-          <button className="btn btn-heart">
+        <div className="d-flex">
+          <a
+            href="/#"
+            className="btn btn-heart">
             <i className="bi bi-heart"></i>
+          </a>
+          <button
+            className="btn btn-primary mr-0"
+            onClick={handleLoginClick}>
+            Login
           </button>
-
-          {/* Botões de Login e Registro com efeito de hover vermelho */}
-          <button className="btn btn-primary mr-2">Login</button>
-          <button className="btn btn-primary mx-2">Inscreva-se</button>
+          <button
+            className="btn btn-primary mx-2"
+            onClick={handleRegistroClick}>
+            Inscreva-se
+          </button>
         </div>
       </div>
     </header>
   );
 }
+
 export default Header;

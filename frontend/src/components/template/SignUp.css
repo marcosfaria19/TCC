@@ -1,0 +1,84 @@
+/* Login.css */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.login-card.card {
+  width: 100%;
+  max-width: 500px;
+}
+
+.login-card .card-body {
+  padding: 1rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: none;
+}
+
+.register-card.card {
+  width: 100%;
+  max-width: 500px;
+}
+
+.register-card {
+  width: 100%;
+  max-width: none;
+  background-image: url("../../assets/background4.jpg");
+}
+
+.register-card .card-body {
+  padding: 2rem;
+}
+
+.register-card-text {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.form-control {
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  height: 60px;
+}
+
+.form-control:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.socials {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Ajuste conforme necessário */
+  height: 40px; /* Ajuste conforme necessário */
+  border-radius: 50%;
+  border: 2px solid grey; /* Cor do círculo */
+  transition: background-color 0.3s, border-color 0.3s;
+
+  &:hover {
+    background-color: #4285f4; /* Cor de fundo ao passar o mouse */
+    border-color: #4285f4;
+  }
+
+  i {
+    color: #4285f4; /* Cor do ícone do Google */
+  }
+}
+
+@media (min-width: 768px) {
+  /* Defina um ponto de interrupção para telas maiores, ajuste conforme necessário */
+  .login-container {
+    flex-wrap: nowrap; /* Impede a quebra para uma nova linha */
+  }
+}
+
+.custom-btn {
+  height: 50px;
+}

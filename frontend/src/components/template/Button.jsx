@@ -1,13 +1,14 @@
 import React from "react";
 import "./Button.css";
+import { Link } from "react-router-dom";
 
-const MainButton = ({ text, onClick }) => {
+const MainButton = ({ text, to }) => {
   return (
-    <button
-      className="main-button"
-      onClick={onClick}>
+    <Link
+      to={to}
+      className="main-button">
       {text}
-    </button>
+    </Link>
   );
 };
 

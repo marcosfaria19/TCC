@@ -13,13 +13,22 @@ function Home() {
           </p>
           <ul className="menu-list">
             <li>
-              <MainButton text="Procurar" />
+              <MainButton
+                text="Procurar"
+                to="/animais"
+              />
             </li>
             <li>
-              <MainButton text="Ajudar" />
+              <MainButton
+                text="Ajudar"
+                to="/ajudar"
+              />
             </li>
             <li>
-              <MainButton text="FAQ" />
+              <MainButton
+                text="FAQ"
+                to="/FAQ"
+              />
             </li>
           </ul>
         </div>
@@ -28,7 +37,7 @@ function Home() {
       <section className="faq">
         <div className="faq-container">
           <h2 className="section-title">Planejando adotar um pet?</h2>
-          <div className="faq-cards row">
+          <div className="faq-cards">
             <CustomCard
               title="Escolha seu amigo"
               text="Explore nossa galeria de amigos peludos! De ronrons a abanadas de rabo, você está prestes a se apaixonar. "

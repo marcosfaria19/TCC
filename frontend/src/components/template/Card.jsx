@@ -4,7 +4,7 @@ import "./Card.css";
 
 function CustomCard({ title, text, onClick }) {
   return (
-    <div className="col-lg-4 col-md-6 mb-4">
+    <div className="col-lg-4 col-sm-12 mb-5">
       <Card
         className="card"
         onClick={onClick}>
