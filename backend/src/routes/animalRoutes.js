@@ -1,7 +1,7 @@
 // animalRoutes.js
 const express = require("express");
 const router = express.Router();
-const Animal = require("../models/animal");
+const Animal = require("../models/Animal");
 
 // Rota para obter todos os animais
 router.get("/", (req, res) => {
