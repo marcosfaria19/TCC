@@ -76,6 +76,23 @@ router.put("/:id", (req, res) => {
   });
 });
 
+// Rota para obter informações do usuário por e-mail
+router.get("/email/:email", (req, res) => {
+  const userEmail = req.params.email;
+
+  User.getByEmail(req.app.get("db"), userEmail, (err, result) => {
+    if (err) {
+      res.status(500).json({ error: "Erro ao obter informações do usuário" });
+    } else {
+      if (!result) {
+        res.status(404).json({ message: "Usuário não encontrado" });
+      } else {
+        res.status(200).json(result);
+      }
+    }
+  });
+});
+
 // Rota para excluir um usuário por ID
 router.delete("/:id", (req, res) => {
   const usuarioId = req.params.id;

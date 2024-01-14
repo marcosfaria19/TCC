@@ -1,6 +1,6 @@
 // firebaseConfig.js
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
@@ -18,4 +18,4 @@ const auth = getAuth(firebaseApp);
 const storage = getStorage(firebaseApp);
 
 export default auth;
-export { storage };
+export { storage, onAuthStateChanged };

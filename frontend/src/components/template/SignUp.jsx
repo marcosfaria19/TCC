@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import auth from "../../firebaseConfig";
+import auth from "../../services/firebaseConfig";
 import { Card, Alert, Form, Button, FloatingLabel } from "react-bootstrap";
 
 import "./SignUp.css";
@@ -22,7 +22,34 @@ const SignUp = () => {
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      navigate("/login");
+
+      // Novo código para enviar informações ao backend após cadastro no Firebase
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/users/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nome: null, // Adicione os dados que você deseja enviar ao backend
+            email,
+            senha: password, // Adicione os dados que você deseja enviar ao backend
+            cpf: null, // Adicione os dados que você deseja enviar ao backend
+            telefone: null, // Adicione os dados que você deseja enviar ao backend
+            endereco: null, // Adicione os dados que você deseja enviar ao backend
+            idade: null, // Adicione os dados que você deseja enviar ao backend
+          }),
+        }
+      );
+
+      if (response.ok) {
+        // Registro no Firebase e no Banco de Dados bem-sucedido
+        navigate("/login");
+      } else {
+        // Trate erros no registro do usuário no backend
+        console.error("Erro no registro do usuário no backend");
+      }
     } catch (error) {
       setError(error.message);
     }
@@ -47,9 +74,9 @@ const SignUp = () => {
         <Card.Body>
           <h2 className="text-center mb-3">Doe seu lar! Cadastre-se</h2>
 
-          <i class="bi bi-facebook mb-3 socials"></i>
-          <i class="bi bi-twitter-x mb-3 socials"></i>
-          <i class="bi bi-google mb-3 socials"></i>
+          <i className="bi bi-facebook mb-3 socials"></i>
+          <i className="bi bi-twitter-x mb-3 socials"></i>
+          <i className="bi bi-google mb-3 socials"></i>
 
           <p>Ou use seu e-mail</p>
           <hr />

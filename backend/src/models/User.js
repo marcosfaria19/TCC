@@ -98,7 +98,7 @@ class User {
     });
   }
 
-  // capacidade de fazer login
+  /*  // capacidade de fazer login
 
   static getByEmailAndPassword(db, email, senha, callback) {
     const sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?";
@@ -110,6 +110,21 @@ class User {
         callback(err, null);
       } else {
         callback(null, result[0]); // Retorna o primeiro usuário encontrado
+      }
+    });
+  } */
+
+  // get by email
+  static getByEmail(db, email, callback) {
+    const sql = "SELECT * FROM usuarios WHERE email = ?";
+    const values = [email];
+
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        console.error("Erro ao obter usuário por e-mail:", err);
+        callback(err, null);
+      } else {
+        callback(null, result[0]);
       }
     });
   }

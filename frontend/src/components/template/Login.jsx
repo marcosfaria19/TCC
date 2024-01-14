@@ -2,9 +2,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import auth from "../../firebaseConfig";
+import auth from "../../services/firebaseConfig";
 import { Card, Alert, Form, Button, FloatingLabel } from "react-bootstrap";
-
 import "./Login.css";
 
 const Login = () => {
@@ -19,7 +18,21 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/perfil"); // Redirecione para a página do perfil após o login
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/users/${email}`
+      );
+      const user = await response.json();
+
+      if (response.ok) {
+        // Aqui, você pode tomar decisões com base nas informações do usuário recebidas do backend
+        if (user.isAdmin) {
+          navigate("/admin"); // Redirecione para o painel de administração, por exemplo
+        } else {
+          navigate("/perfil");
+        }
+      } else {
+        console.error("Erro ao obter informações do usuário do backend");
+      }
     } catch (error) {
       setError(error.message);
     }
@@ -35,9 +48,9 @@ const Login = () => {
         <Card.Body>
           <h2 className="text-center mb-3">Faça seu Login</h2>
 
-          <i class="bi bi-facebook mb-3 socials"></i>
-          <i class="bi bi-twitter-x mb-3 socials"></i>
-          <i class="bi bi-google mb-3 socials"></i>
+          <i className="bi bi-facebook mb-3 socials"></i>
+          <i className="bi bi-twitter-x mb-3 socials"></i>
+          <i className="bi bi-google mb-3 socials"></i>
 
           <p>Ou use seu e-mail cadastrado</p>
           <hr />

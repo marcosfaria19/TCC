@@ -1,38 +1,18 @@
-/* // authMiddleware.js
-
-// Verificar se o usuario está autenticado
-
-const firebase = require("firebase/compat/auth");
-
-const verificarAutenticacao = async (req, res, next) => {
-  try {
-    const idToken = req.headers.authorization.split(" ")[1];
-    const decodedToken = await firebase.auth().verifyIdToken(idToken);
-    req.user = decodedToken;
-    next();
-  } catch (error) {
-    res.status(401).json({ error: "Não autorizado" });
-  }
-};
-
-module.exports = verificarAutenticacao;
- */
+// authMiddleware.js
 
 const admin = require("../../firebase");
 
-const authenticate = (req, res, next) => {
+const authenticate = async (req, res, next) => {
   const idToken = req.headers.authorization;
 
-  admin
-    .auth()
-    .verifyIdToken(idToken)
-    .then((decodedToken) => {
-      req.user = decodedToken;
-      next();
-    })
-    .catch((error) => {
-      res.status(401).json({ error: "Token inválido", details: error });
-    });
+  try {
+    const decodedToken = await admin.auth().verifyIdToken(idToken);
+    req.uid = decodedToken.uid; // Adiciona o ID do usuário ao objeto de solicitação (req)
+    next(); // Avança para a próxima rota
+  } catch (error) {
+    console.error("Erro na verificação do token:", error);
+    res.status(401).json({ error: "Acesso não autorizado" });
+  }
 };
 
 module.exports = authenticate;

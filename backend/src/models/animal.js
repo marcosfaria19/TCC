@@ -19,8 +19,8 @@ class Animal {
       this.idade,
       this.genero,
       this.personalidade,
+      this.saude,
       this.imagemUrl,
-      JSON.stringify(this.saude),
     ];
 
     db.query(sql, values, (err, result) => {

@@ -5,7 +5,6 @@ const cors = require("cors");
 
 const userRoutes = require("./src/routes/userRoutes");
 const animalRoutes = require("./src/routes/animalRoutes");
-const authRoutes = require("./src/routes/authRoutes.js");
 const adocaoRoutes = require("./src/routes/adocaoRoutes");
 const documentoRoutes = require("./src/routes/documentoRoutes.js");
 
@@ -38,7 +37,6 @@ app.set("db", db);
 // Rotas
 app.use("/users", userRoutes);
 app.use("/animais", animalRoutes);
-/* app.use("/auth", authRoutes); */
 app.use("/adocoes", adocaoRoutes);
 app.use("/documentos", documentoRoutes);
 
