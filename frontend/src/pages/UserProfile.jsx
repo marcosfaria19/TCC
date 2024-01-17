@@ -21,7 +21,7 @@ const UserProfile = () => {
         onAuthStateChanged(auth, async (user) => {
           if (user) {
             const response = await fetch(
-              `${process.env.REACT_APP_BACKEND_URL}/users/${user.email}`
+              `${process.env.REACT_APP_BACKEND_URL}/users/email/${user.email}`
             );
 
             const data = await response.json();

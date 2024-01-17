@@ -1,4 +1,4 @@
-const User = require("../models/User");
+/* const User = require("../models/user");
 const bcrypt = require("bcrypt");
 
 async function register(req, res) {
@@ -37,3 +37,4 @@ module.exports = {
   register,
   login,
 };
+ */

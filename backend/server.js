@@ -10,10 +10,15 @@ const documentoRoutes = require("./src/routes/documentoRoutes.js");
 
 require("dotenv").config();
 
+// Swagger
+const swaggerSpec = require("./src/services/swagger.js");
+const swaggerui = require("swagger-ui-express");
+
 // Inicializar o Express
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
@@ -40,6 +45,7 @@ app.use("/animais", animalRoutes);
 app.use("/adocoes", adocaoRoutes);
 app.use("/documentos", documentoRoutes);
 
+app.use("/api-docs", swaggerui.serve, swaggerui.setup(swaggerSpec));
 app.listen(port, () => {
   console.log(`Servidor iniciado na porta ${port}`);
 });

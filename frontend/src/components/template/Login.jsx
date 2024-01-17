@@ -19,7 +19,14 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/users/${email}`
+        `${process.env.REACT_APP_BACKEND_URL}/users/email/${email}`,
+        {
+          method: "GET", // ou o método HTTP apropriado para sua API
+          headers: {
+            "Content-Type": "application/json",
+            // Outros cabeçalhos necessários para sua API, se houver
+          },
+        }
       );
       const user = await response.json();
 

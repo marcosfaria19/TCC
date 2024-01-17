@@ -68,3 +68,72 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+```
+frontend
+├─ .gitignore
+├─ package-lock.json
+├─ package.json
+├─ public
+│  ├─ favicon.ico
+│  ├─ index.html
+│  ├─ logo192.png
+│  ├─ logo512.png
+│  ├─ manifest.json
+│  ├─ old
+│  │  ├─ favicon.ico
+│  │  ├─ logo192.png
+│  │  └─ logo512.png
+│  └─ robots.txt
+├─ README.md
+└─ src
+   ├─ App.css
+   ├─ App.jsx
+   ├─ App.test.js
+   ├─ assets
+   │  ├─ background3.jpg
+   │  ├─ background4.jpg
+   │  └─ logo.png
+   ├─ components
+   │  └─ template
+   │     ├─ About.jsx
+   │     ├─ AccountSettings.jsx
+   │     ├─ AdoptionForm.jsx
+   │     ├─ Button.css
+   │     ├─ Button.jsx
+   │     ├─ Card.css
+   │     ├─ Card.jsx
+   │     ├─ Favorites.jsx
+   │     ├─ Footer.css
+   │     ├─ Footer.jsx
+   │     ├─ Header.css
+   │     ├─ Header.jsx
+   │     ├─ Login.css
+   │     ├─ Login.jsx
+   │     ├─ SignUp.css
+   │     └─ SignUp.jsx
+   ├─ index.css
+   ├─ index.js
+   ├─ logo.svg
+   ├─ pages
+   │  ├─ AdoptionRequest.jsx
+   │  ├─ AnimalCard.css
+   │  ├─ AnimalCard.jsx
+   │  ├─ AnimalDetails.jsx
+   │  ├─ AnimalList.css
+   │  ├─ AnimalList.jsx
+   │  ├─ CreateAnimal.css
+   │  ├─ CreateAnimal.jsx
+   │  ├─ Entrar.jsx
+   │  ├─ Home.css
+   │  ├─ Home.jsx
+   │  ├─ Registrar.jsx
+   │  ├─ UserProfile.css
+   │  └─ UserProfile.jsx
+   ├─ reportWebVitals.js
+   ├─ Routes.jsx
+   ├─ services
+   │  └─ firebaseConfig.js
+   └─ setupTests.js
+
+```
