@@ -93,7 +93,7 @@ const UserProfile = () => {
     <div className="my-5 d-flex justify-content-center align-items-center">
       {userData ? (
         <Card className="p-4 custom-card">
-          <h2 className="mb-4 text-center">Perfil do Usuário</h2>
+          <h2 className="mb-4 text-center">Bem vindo(a)!</h2>
           {isSmallScreen ? dropdown : tabs}
           <div className="mt-4">
             {selectedContent[key]}{" "}

@@ -1,6 +1,6 @@
 /* Card.css */
 
-.card {
+.custom-card {
   border: 1px solid #ddd;
   text-align: center;
   padding: 3rem;
@@ -10,12 +10,12 @@
   background-color: #f4f4f4;
 }
 
-.card-title {
+.custom-card-title {
   font-size: 24px;
   margin: 20px 0;
 }
 
-.card-text {
+.custom-card-text {
   font-size: 16px;
   margin: 20px 0;
 }

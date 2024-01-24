@@ -83,9 +83,7 @@ const CreateAnimal = () => {
           name="categoria"
           value={animal.categoria}
           onChange={handleChange}>
-          <option
-            value=""
-            disabled>
+          <option value="" disabled>
             Selecione a Categoria
           </option>
           <option value="Gato">Gato</option>
@@ -101,13 +99,8 @@ const CreateAnimal = () => {
         />
 
         <label>Gênero:</label>
-        <select
-          name="genero"
-          value={animal.genero}
-          onChange={handleChange}>
-          <option
-            value=""
-            disabled>
+        <select name="genero" value={animal.genero} onChange={handleChange}>
+          <option value="" disabled>
             Selecione o Gênero
           </option>
           <option value="Macho">Macho</option>
@@ -139,11 +132,7 @@ const CreateAnimal = () => {
         />
 
         <label>Imagem:</label>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageChange}
-        />
+        <input type="file" accept="image/*" onChange={handleImageChange} />
 
         <button type="submit">Criar Animal</button>
       </form>

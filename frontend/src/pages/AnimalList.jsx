@@ -29,15 +29,12 @@ const AnimalList = () => {
   }, []); // Execute a busca apenas uma vez no carregamento do componente
 
   return (
-    <div className="container mt-4">
+    <div className="secao-animais mt-4">
       <h2>Animais para Adoção</h2>
-      <div className="row">
+      <div className="animais">
         {animais.map((animal) => (
           // Use o componente AnimalCard para cada animal
-          <AnimalCard
-            key={animal.id}
-            animal={animal}
-          />
+          <AnimalCard key={animal.id} animal={animal} />
         ))}
       </div>
     </div>

@@ -1,60 +1,63 @@
 // AnimalCard.js
 import React, { useState } from "react";
-import "./AnimalCard.css"; // Importe o arquivo de estilos
+import "./AnimalCard.css";
 
 const AnimalCard = ({ animal }) => {
-  // Crie um estado para controlar se os detalhes devem ser mostrados ou não
-  const [showDetails, setShowDetails] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [isFavorited, setIsFavorited] = useState(false);
 
-  // Crie uma função para alternar o valor de showDetails
-  const toggleDetails = () => {
-    setShowDetails((prev) => !prev);
+  const handleMouseEnter = () => {
+    setHovered(true);
   };
 
+  const handleMouseLeave = () => {
+    setHovered(false);
+  };
+
+  const handleFavoriteClick = (e) => {
+    e.preventDefault();
+    setIsFavorited(!isFavorited);
+  };
+
+  const isMale = animal.genero.toLowerCase() === "macho";
+  const isFemale = animal.genero.toLowerCase() === "fêmea";
+
   return (
-    <div className="col-md-4 animal-card">
-      {/* Adicione um evento de clique e um estilo condicional na div com a classe card */}
-      <div
-        className={`card ${showDetails ? "selected" : ""}`}
-        onClick={toggleDetails}>
-        <img
-          src={animal.imagemUrl}
-          className="card-img-top"
-          alt={animal.nome}
-        />
-        <div className="card-body">
-          <h5 className="card-title">{animal.nome}</h5>
-          {/* Adicione uma condição para mostrar as informações adicionais somente se showDetails for true */}
-          {showDetails && (
-            <div>
-              <p className="card-text">
-                <strong>Categoria:</strong> {animal.categoria}
+    <div
+      className={`col-md-3 col-lg-3 animal-card ${hovered ? "hovered" : ""}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}>
+      <a href={`/animais/${animal.id}`} className="card-link">
+        <div className={`animal-card-custom ${hovered ? "hovered" : ""}`}>
+          <img
+            src={animal.imagemUrl}
+            className="animal-card-img-top"
+            alt={animal.nome}
+          />
+          <button
+            className={`favorite-btn ${isFavorited ? "favorited" : ""}`}
+            onClick={handleFavoriteClick}>
+            <i className={`bi bi-heart${isFavorited ? "-fill" : ""}`}></i>
+          </button>
+          <div className={`additional-info ${hovered ? "hovered" : ""}`}>
+            <p className="animal-card-text">
+              <strong className="animal-nome">
+                {animal.nome.toUpperCase()}
+              </strong>
+            </p>
+            {isMale && (
+              <p className="animal-card-text">
+                <i className="bi bi-gender-male"></i>
               </p>
-              {animal.categoria.toLowerCase() === "gato" && (
-                <p className="card-text">
-                  <i className="bi bi-cat"></i> Gato
-                </p>
-              )}
-              <p className="card-text">
-                <i
-                  className={`bi bi-gender-${animal.genero.toLowerCase()}`}></i>{" "}
-                {animal.genero}
+            )}
+            {isFemale && (
+              <p className="animal-card-text">
+                <i className="bi bi-gender-female"></i>
               </p>
-            </div>
-          )}
-          <a
-            href={`/animais/${animal.id}`}
-            className="btn btn-primary">
-            Detalhes
-          </a>
-          {/* Adicione um ícone de coração vermelho se o animal tiver adocaoEspecial como true */}
-          {animal.adocaoEspecial && (
-            <span className="special-adoption">
-              <i className="bi bi-heart-fill"></i>
-            </span>
-          )}
+            )}
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   );
 };

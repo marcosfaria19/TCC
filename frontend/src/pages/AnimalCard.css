@@ -1,60 +1,90 @@
 /* AnimalCard.css */
-.card {
-  width: 300px;
-  height: 400px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+.animal-card-custom {
   transition: 0.3s;
-  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-.card-img-top {
+.animal-card {
   width: 100%;
-  height: 250px;
+  object-fit: cover;
+}
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.animal-card-img-top {
+  width: 100%;
+  height: 400px;
   object-fit: cover;
 }
 
-.card-body {
-  padding: 10px;
-  position: relative;
+.animal-card-body {
+  padding: 0px;
 }
 
-.card-title {
-  font-family: "Roboto", sans-serif;
+.animal-card-text {
   font-weight: bold;
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.card-text {
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.btn {
-  display: block;
-  width: 100%;
   padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: palevioletred;
-  color: white;
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
+  margin: 10px;
 }
 
-.selected {
-  border: 2px solid palevioletred;
-}
-
-.special-adoption {
+.animal-card-text .bi {
+  font-size: 60px;
   position: absolute;
-  top: 10px;
-  right: 10px;
-  color: red;
-  font-size: 24px;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  margin: 10px;
+}
+
+.animal-nome {
+  font-size: 25px;
+}
+
+.additional-info {
+  position: absolute;
+  color: white;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background-color: rgba(185, 43, 141, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hovered .additional-info {
+  opacity: 1;
+}
+
+/* AnimalCard.css */
+.favorite-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+  z-index: 1;
+  font-size: 20px; /* Adjust the font size for a larger heart icon */
+  transition: color 0.3s, transform 0.3s;
+  opacity: 0; /* Initially hidden */
+  transform: scale(1.2); /* Initial scale for a smooth transition effect */
+}
+
+.favorite-btn.favorited {
+  color: red; /* Change the color when favorited */
+  opacity: 0.5;
+}
+
+.favorite-btn:hover {
+  color: #ff8080; /* Change the color on hover */
+  transform: scale(1.5); /* Scale up on hover */
+}
+
+.animal-card-custom:hover .favorite-btn {
+  opacity: 1; /* Show on hover */
 }

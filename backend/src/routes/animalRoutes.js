@@ -41,6 +41,7 @@ router.put("/:id", (req, res) => {
     genero: req.body.genero,
     personalidade: req.body.personalidade,
     saude: req.body.saude,
+    data_resgate: req.body.data_resgate,
     imagemUrl: req.body.imagemUrl,
   };
 
@@ -71,6 +72,7 @@ router.post("/", (req, res) => {
     req.body.genero,
     req.body.personalidade,
     req.body.saude,
+    req.body.data_resgate,
     req.body.imagemUrl
   );
 
