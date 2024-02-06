@@ -1,0 +1,36 @@
+/* AnimalDetails.css */
+.animal-name {
+  text-align: center;
+  background-color: #f8d7da;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.animal-image {
+  width: 100%;
+  height: auto;
+}
+
+.card {
+  margin-top: 20px;
+}
+
+@media (max-width: 767px) {
+  .animal-name {
+    font-size: 1.5rem;
+  }
+}
+
+.botaoAdocao {
+  align-self: center;
+}
+
+/* AnimalDetails.css */
+.text-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.mt-auto {
+  margin-top: auto;
+}

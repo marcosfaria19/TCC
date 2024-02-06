@@ -24,7 +24,7 @@ const AnimalCard = ({ animal }) => {
 
   return (
     <div
-      className={`col-md-3 col-lg-3 animal-card ${hovered ? "hovered" : ""}`}
+      className={`col-md-6 col-lg-3 animal-card ${hovered ? "hovered" : ""}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}>
       <a href={`/animais/${animal.id}`} className="card-link">

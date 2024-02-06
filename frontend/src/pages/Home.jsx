@@ -1,3 +1,5 @@
+/* Home.jsx */
+
 import "./Home.css";
 import MainButton from "../components/template/Button";
 import CustomCard from "../components/template/Card";
@@ -13,22 +15,13 @@ function Home() {
           </p>
           <ul className="menu-list">
             <li>
-              <MainButton
-                text="Procurar"
-                to="/animais"
-              />
+              <MainButton text="Procurar" to="/animais" />
             </li>
             <li>
-              <MainButton
-                text="Ajudar"
-                to="/ajudar"
-              />
+              <MainButton text="Ajudar" to="/ajudar" />
             </li>
             <li>
-              <MainButton
-                text="FAQ"
-                to="/FAQ"
-              />
+              <MainButton text="FAQ" to="/FAQ" />
             </li>
           </ul>
         </div>

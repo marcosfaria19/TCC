@@ -73,7 +73,7 @@ class Animal {
 
   static updateById(db, id, updatedAnimal, callback) {
     const sql =
-      "UPDATE animais SET nome = ?, categoria = ?, idade = ?, genero = ?, personalidade = ?, saude = ?, data_resgate = ?, id_user = ?, id_admin = ?, imagemUrl = ?, WHERE id = ?";
+      "UPDATE animais SET nome = ?, categoria = ?, idade = ?, genero = ?, personalidade = ?, saude = ?, data_resgate = ?, id_user = ?, id_admin = ?, imagemUrl = ? WHERE id = ?";
     const values = [
       updatedAnimal.nome,
       updatedAnimal.categoria,

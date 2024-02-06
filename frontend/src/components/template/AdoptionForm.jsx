@@ -1,6 +1,6 @@
 // AdoptionForm.jsx
 import React, { useState } from "react";
-import { Form, Button, Col, Container } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 
 const AdoptionForm = () => {
   const [adoptionInfo, setAdoptionInfo] = useState({
