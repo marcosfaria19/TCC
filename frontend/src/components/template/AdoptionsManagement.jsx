@@ -1,6 +1,6 @@
 // UserManagement.jsx
 
-import AdoptionRequestTable from "../components/template/AdoptionRequestTable";
+import AdoptionRequestTable from "./AdoptionRequestTable";
 
 const AdoptionsManagement = () => {
   return (

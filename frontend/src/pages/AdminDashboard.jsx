@@ -3,14 +3,14 @@ import React from "react";
 import { Container, Tabs, Tab } from "react-bootstrap";
 import AnimalManagement from "./AnimalManagement";
 import UserManagement from "./UserManagement";
-import AdoptionsManagement from "./AdoptionsManagement";
+import AdoptionsManagement from "../components/template/AdoptionsManagement";
 
 /* Importe os outros componentes necessários aqui */
 
 const AdminDashboard = () => {
   return (
     <Container>
-      <h2>Dashboard do Administrador</h2>
+      <h2>Painel Administrativo</h2>
       <Tabs defaultActiveKey="animal" id="admin-tabs">
         <Tab eventKey="animal" title="Gerenciar Animais">
           <AnimalManagement />

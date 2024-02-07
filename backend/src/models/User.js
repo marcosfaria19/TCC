@@ -60,17 +60,17 @@ class User {
     });
   }
 
-  updateById(db, id, callback) {
+  static updateById(db, id, updatedUser, callback) {
     const sql =
       "UPDATE usuarios SET nome = ?, email = ?, senha = ?, cpf = ?, telefone = ?, endereco = ?, idade = ? WHERE id = ?";
     const values = [
-      this.nome,
-      this.email,
-      this.senha,
-      this.cpf,
-      this.telefone,
-      this.endereco,
-      this.idade,
+      updatedUser.nome,
+      updatedUser.email,
+      updatedUser.senha,
+      updatedUser.cpf,
+      updatedUser.telefone,
+      updatedUser.endereco,
+      updatedUser.idade,
       id,
     ];
 
