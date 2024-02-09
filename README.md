@@ -11,7 +11,6 @@ Este é um projeto de aplicação de adoção de animais desenvolvido como parte
 5. [Mockup da Proposta de Solução](#mockup-da-proposta-de-solução)
 6. [Arquitetura de Software](#arquitetura-de-software)
 7. [Registros das Evidências do Projeto](#registros-das-evidências-do-projeto)
-8. [Considerações Finais e Expectativas](#considerações-finais-e-expectativas)
 
 ## Contextualização da Proposta
 
@@ -123,7 +122,8 @@ Aqui estão alguns mockups iniciais do design da aplicação:
 
 A arquitetura da solução de adoção de animais segue o modelo de três camadas, compreendendo o Frontend, Backend e Banco de Dados. Cada camada desempenha um papel específico, contribuindo para uma experiência de usuário eficiente e segura.
 
-- **Frontend:** O Frontend é a interface com o usuário, desenvolvida com HTML, CSS e JavaScript, aproveitando as bibliotecas React e Bootstrap para criar uma experiência dinâmica e responsiva.
+- **Frontend:** O Frontend é a interface com o usuário, desenvolvida com HTML, C
+  SS e JavaScript, aproveitando as bibliotecas React e Bootstrap para criar uma experiência dinâmica e responsiva.
 - **Backend:** O Backend é construído em Node.js com Express.js, proporcionando uma base sólida para lidar com rotas e solicitações. A separação de responsabilidades é mantida por meio de controllers, middlewares e modelos.
 - **Banco de Dados:** O banco de dados relacional MySQL desempenha um papel central na estrutura da solução proposta. Ele é empregado para armazenar dados cruciais, incluindo informações detalhadas dos usuários, animais disponíveis para adoção e solicitações de adoção. A conexão entre o backend e o banco de dados é estabelecida por meio do uso da biblioteca `mysql2'.
 - **Autenticação e Autorização:** O sistema de autenticação e autorização foi feito com o Firebase.
