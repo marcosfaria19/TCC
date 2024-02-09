@@ -1,4 +1,5 @@
 // firebaseConfig.js
+
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getStorage } from "firebase/storage";
@@ -17,5 +18,4 @@ const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const storage = getStorage(firebaseApp);
 
-export default auth;
-export { storage, onAuthStateChanged };
+export { auth, storage, onAuthStateChanged };

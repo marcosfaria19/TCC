@@ -1,21 +1,29 @@
 // About.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Form, Button } from "react-bootstrap";
+import { Context } from "../auth/AuthContext";
 
-const About = ({ userId }) => {
+const About = () => {
+  const { user } = useContext(Context);
+
   const [userInfo, setUserInfo] = useState({
     nome: "",
     cpf: "",
     telefone: "",
     endereco: "",
-    idade: "",
+    dataNascimento: "",
+    cidade: "",
+    estado: "",
+    cep: "",
   });
 
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
+        if (!user || !user.id) return;
+
         const response = await fetch(
-          `${process.env.REACT_APP_BACKEND_URL}/users/${userId}`
+          `${process.env.REACT_APP_BACKEND_URL}/users/${user.id}`
         );
         const data = await response.json();
 
@@ -25,7 +33,10 @@ const About = ({ userId }) => {
             cpf: data.cpf || "",
             telefone: data.telefone || "",
             endereco: data.endereco || "",
-            idade: data.idade || "",
+            dataNascimento: data.dataNascimento || "",
+            cidade: data.cidade || "",
+            estado: data.estado || "",
+            cep: data.cep || "",
           });
         } else {
           console.error("Erro ao obter informações do usuário");
@@ -35,31 +46,21 @@ const About = ({ userId }) => {
       }
     };
 
-    fetchUserInfo();
-  }, [userId]);
+    if (user) {
+      fetchUserInfo();
+    }
+  }, [user]);
 
   const handleSaveAboutMe = async () => {
     try {
-      console.log("Dados do usuário local:", userInfo);
-
-      const requestBody = {
-        nome: userInfo.nome,
-        cpf: userInfo.cpf,
-        telefone: userInfo.telefone,
-        endereco: userInfo.endereco,
-        idade: userInfo.idade,
-      };
-
-      console.log("Dados enviados para o backend:", requestBody);
-
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/users/${userId}`,
+        `${process.env.REACT_APP_BACKEND_URL}/users/${user.id}`,
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(requestBody),
+          body: JSON.stringify(userInfo),
         }
       );
 
@@ -131,7 +132,6 @@ const About = ({ userId }) => {
         <Form.Control
           type="text"
           placeholder="Cidade"
-          disabled
           value={userInfo.cidade}
           onChange={(e) => setUserInfo({ ...userInfo, cidade: e.target.value })}
         />
@@ -144,6 +144,10 @@ const About = ({ userId }) => {
             setUserInfo({ ...userInfo, estado: e.target.value })
           }>
           {/* Adicione as opções de estado aqui */}
+          <option value="SP">São Paulo</option>
+          <option value="RJ">Rio de Janeiro</option>
+          <option value="MG">Minas Gerais</option>
+          {/* Adicione as opções de estado que você precisa */}
         </Form.Select>
       </Form.Group>
       <Form.Group className="mb-3">

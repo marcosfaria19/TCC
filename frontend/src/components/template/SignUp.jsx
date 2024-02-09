@@ -1,8 +1,9 @@
 // SignUp.js
+// SignUp.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import auth from "../../services/firebaseConfig";
+import { auth } from "../../services/firebaseConfig";
 import { Card, Alert, Form, Button, FloatingLabel } from "react-bootstrap";
 
 import "./SignUp.css";
@@ -17,13 +18,20 @@ const SignUp = () => {
   const handleLoginClick = () => {
     navigate("/login");
   };
+
   const handleSignUp = async (e) => {
     e.preventDefault();
 
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      // Criar usuário no Firebase
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const { uid } = userCredential.user; // Obter o UID do Firebase
 
-      // Novo código para enviar informações ao backend após cadastro no Firebase
+      // Código para enviar informações ao backend após cadastro no Firebase
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/users/register`,
         {
@@ -32,13 +40,9 @@ const SignUp = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            nome: null, // Adicione os dados que você deseja enviar ao backend
             email,
-            senha: password, // Adicione os dados que você deseja enviar ao backend
-            cpf: null, // Adicione os dados que você deseja enviar ao backend
-            telefone: null, // Adicione os dados que você deseja enviar ao backend
-            endereco: null, // Adicione os dados que você deseja enviar ao backend
-            idade: null, // Adicione os dados que você deseja enviar ao backend
+            senha: password,
+            uid, // Enviar o UID do Firebase para o backend durante o registro
           }),
         }
       );

@@ -4,9 +4,7 @@ import { Tab, Tabs, Card, Dropdown, NavItem, NavLink } from "react-bootstrap";
 import { useMediaQuery } from "react-responsive";
 import "./UserProfile.css";
 import About from "../components/template/About";
-import AccountSettings from "../components/template/AccountSettings";
 import Favorites from "../components/template/Favorites";
-import AdoptionForm from "../components/template/AdoptionForm";
 
 const UserProfile = () => {
   const [userData, setUserData] = useState(null);
@@ -54,9 +52,8 @@ const UserProfile = () => {
       className="mb-3"
       variant="underline">
       <Tab eventKey="sobre" title="Sobre mim"></Tab>
-      <Tab eventKey="configuracoes" title="Configurações da conta"></Tab>
       <Tab eventKey="favoritos" title="Favoritos"></Tab>
-      <Tab eventKey="adocao" title="Perfil de adoção"></Tab>
+      <Tab eventKey="adocao" title="Minhas Adoções"></Tab>
     </Tabs>
   );
 
@@ -65,28 +62,22 @@ const UserProfile = () => {
       <Dropdown.Toggle as={NavLink}>
         {key === "sobre"
           ? "Sobre mim"
-          : key === "configuracoes"
-          ? "Configurações da conta"
           : key === "favoritos"
           ? "Favoritos"
-          : "Perfil de adoção"}
+          : "Minhas Adoções"}
       </Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item eventKey="sobre">Sobre mim</Dropdown.Item>
-        <Dropdown.Item eventKey="configuracoes">
-          Configurações da conta
-        </Dropdown.Item>
         <Dropdown.Item eventKey="favoritos">Favoritos</Dropdown.Item>
-        <Dropdown.Item eventKey="adocao">Perfil de adoção</Dropdown.Item>
+        <Dropdown.Item eventKey="adocao">Minhas adoções</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
 
   const selectedContent = {
     sobre: <About />,
-    configuracoes: <AccountSettings />,
     favoritos: <Favorites />,
-    adocao: <AdoptionForm />,
+    /* adocao: <AdoptionStatus />, */
   };
 
   return (

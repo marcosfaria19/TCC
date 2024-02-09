@@ -1,18 +1,26 @@
-// authMiddleware.js
+// authMiddleare.js
 
-const admin = require("../../firebase");
+const firebaseAdmin = require("firebase-admin");
+const serviceAccount = require("../../serviceAccount.json");
 
-const authenticate = async (req, res, next) => {
+firebaseAdmin.initializeApp({
+  credential: firebaseAdmin.credential.cert(serviceAccount),
+  databaseURL: "https://tcc-pucrs-56af7-default-rtdb.firebaseio.com",
+});
+
+const verifyToken = async (req, res, next) => {
   const idToken = req.headers.authorization;
-
   try {
-    const decodedToken = await admin.auth().verifyIdToken(idToken);
-    req.uid = decodedToken.uid; // Adiciona o ID do usuário ao objeto de solicitação (req)
-    next(); // Avança para a próxima rota
+    if (!idToken) {
+      throw new Error("Token não fornecido");
+    }
+    const decodedToken = await firebaseAdmin.auth().verifyIdToken(idToken);
+    req.user = decodedToken;
+    next();
   } catch (error) {
-    console.error("Erro na verificação do token:", error);
-    res.status(401).json({ error: "Acesso não autorizado" });
+    console.error(error);
+    res.status(403).json({ message: "Acesso não autorizado" });
   }
 };
 
-module.exports = authenticate;
+module.exports = verifyToken;

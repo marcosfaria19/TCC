@@ -1,7 +1,8 @@
-// server.js
 const express = require("express");
 const mysql2 = require("mysql2");
 const cors = require("cors");
+const router = express.Router();
+const verifyToken = require("./src/middleware/authMiddleware.js");
 
 const userRoutes = require("./src/routes/userRoutes");
 const animalRoutes = require("./src/routes/animalRoutes");
@@ -39,7 +40,7 @@ db.connect((err) => {
 app.set("db", db);
 
 // Rotas
-app.use("/users", userRoutes);
+app.use("/users", userRoutes); // Apply middleware to protected routes
 app.use("/animais", animalRoutes);
 app.use("/documentos", documentoRoutes);
 

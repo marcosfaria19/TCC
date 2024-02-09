@@ -1,6 +1,6 @@
 // usuario.js
 class User {
-  constructor(nome, email, senha, cpf, telefone, endereco, idade) {
+  constructor(nome, email, senha, cpf, telefone, endereco, idade, uid) {
     this.nome = nome;
     this.email = email;
     this.senha = senha;
@@ -8,11 +8,12 @@ class User {
     this.telefone = telefone;
     this.endereco = endereco;
     this.idade = idade;
+    this.uid = uid;
   }
 
   create(db, callback) {
     const sql =
-      "INSERT INTO usuarios (nome, email, senha, cpf, telefone, endereco, idade) VALUES (?, ?, ?, ?, ?, ?, ?)";
+      "INSERT INTO usuarios (nome, email, senha, cpf, telefone, endereco, idade,uid) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
     const values = [
       this.nome,
       this.email,
@@ -21,6 +22,7 @@ class User {
       this.telefone,
       this.endereco,
       this.idade,
+      this.uid,
     ];
 
     db.query(sql, values, (err, result) => {
@@ -62,7 +64,7 @@ class User {
 
   static updateById(db, id, updatedUser, callback) {
     const sql =
-      "UPDATE usuarios SET nome = ?, email = ?, senha = ?, cpf = ?, telefone = ?, endereco = ?, idade = ? WHERE id = ?";
+      "UPDATE usuarios SET nome = ?, email = ?, senha = ?, cpf = ?, telefone = ?, endereco = ?, idade = ?, uid = ? WHERE id = ?";
     const values = [
       updatedUser.nome,
       updatedUser.email,
@@ -71,6 +73,7 @@ class User {
       updatedUser.telefone,
       updatedUser.endereco,
       updatedUser.idade,
+      updatedUser.uid,
       id,
     ];
 

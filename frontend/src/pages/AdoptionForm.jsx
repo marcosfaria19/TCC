@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import "./AdoptionForm.css";
 
 const AdoptionForm = ({ userId, animalId }) => {
   const navigate = useNavigate();
@@ -54,36 +55,19 @@ const AdoptionForm = ({ userId, animalId }) => {
     e.preventDefault();
 
     try {
-      let updatedUser;
-      if (userId) {
-        // Atualizar usuário existente
-        const response = await fetch(
-          `${process.env.REACT_APP_BACKEND_URL}/users/${userId}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(user),
-          }
-        );
-        updatedUser = await response.json();
-        console.log(JSON.stringify(user));
-      } else {
-        // Criar novo usuário
-        const response = await fetch(
-          `${process.env.REACT_APP_BACKEND_URL}/users/register`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(user),
-          }
-        );
-        updatedUser = await response.json();
-        console.log(JSON.stringify(user));
-      }
+      // Atualizar usuário existente
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/users/${userId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        }
+      );
+      const updatedUser = await response.json();
+      console.log(user);
 
       // Criar documento de solicitação de adoção
       const newDocumento = {
@@ -91,6 +75,8 @@ const AdoptionForm = ({ userId, animalId }) => {
         id_animal: animalId,
         ...documento,
       };
+
+      console.log("Novo Documento:", newDocumento); // Adicione este console.log()
 
       await fetch(`${process.env.REACT_APP_BACKEND_URL}/documentos`, {
         method: "POST",
@@ -102,18 +88,25 @@ const AdoptionForm = ({ userId, animalId }) => {
 
       // Redirecionar para página de sucesso
       navigate("/sucesso-adocao");
-      console.log(JSON.stringify(newDocumento));
     } catch (error) {
       console.error("Erro ao enviar solicitação de adoção:", error);
-      // Exibir mensagem de erro para o usuário
     }
   };
 
   return (
     <div className="container adoption-form-container">
-      <h2 className="mt-4">Preencha seus dados e solicite a adoção</h2>
-      <Form onSubmit={handleFormSubmit}>
-        <Row className="mb-3">
+      <h2 className="mt-4">Formulário de adoção</h2>
+      <p>
+        Estamos quase lá! Com base nas suas respostas no formulário abaixo,
+        avaliaremos se seu perfil é adequado para receber o animal selecionado
+        por você. Evite deixar qualquer resposta em branco, cada pergunta deve
+        ser respondida com atenção para que possamos obter um entendimento mais
+        completo sobre você.
+      </p>
+
+      <Form onSubmit={(e) => handleFormSubmit(e, animalId)}>
+        <h4 className="mt-3">Informações de contato</h4>
+        <Row className="mb-3 mt-4">
           <Form.Group as={Col} md={6} controlId="formNome">
             <Form.Label>Nome</Form.Label>
             <Form.Control
@@ -155,14 +148,14 @@ const AdoptionForm = ({ userId, animalId }) => {
               name="endereco"
               value={user.endereco}
               onChange={handleInputChange}
-              placeholder="Digite seu endereço completo."
+              placeholder="Digite seu endereço completo"
               required
             />
           </Form.Group>
         </Row>
-        <h3 className="mt-5">Formulário de Adoção</h3>
+        <h4>Sobre o lar</h4>
         <Form.Group className="mb-3" controlId="formMotivo">
-          <Form.Label>Motivo da adoção</Form.Label>
+          <Form.Label>Por que adotar?</Form.Label>
           <Form.Control
             as="textarea"
             rows={4}
@@ -175,8 +168,10 @@ const AdoptionForm = ({ userId, animalId }) => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formCondicoesLar">
           <Form.Label>
-            É possível incluir os custos associados a alimentação, vacinas,
-            atendimento veterinário?
+            É possível incluir em seu orçamento os custos associados à
+            alimentação de qualidade (aproximadamente R$ 120 por mês), bem como
+            às vacinas e ao atendimento veterinário (aproximadamente R$ 250
+            anualmente)?
           </Form.Label>
           <div>
             <Form.Check
@@ -214,13 +209,13 @@ const AdoptionForm = ({ userId, animalId }) => {
           <Form.Check
             type="checkbox"
             name="contrato_adocao"
-            label="Concorda em assinar contrato de adoção no ato da entrega?"
+            label="Concorda em assinar um contrato de adoção no ato da entrega, responsabilizando pelos cuidados com o animal e sua segurança?"
             checked={documento.aceite_termo}
             onChange={handleCheckboxChange}
             required
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button className="mt-4" variant="primary" type="submit">
           Enviar Solicitação de Adoção
         </Button>
       </Form>

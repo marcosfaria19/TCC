@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import auth from "../../services/firebaseConfig";
+import { auth } from "../../services/firebaseConfig";
 import { Card, Alert, Form, Button, FloatingLabel } from "react-bootstrap";
 import "./Login.css";
 
@@ -21,17 +21,16 @@ const Login = () => {
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/users/email/${email}`,
         {
-          method: "GET", // ou o método HTTP apropriado para sua API
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
-            // Outros cabeçalhos necessários para sua API, se houver
           },
         }
       );
       const user = await response.json();
+      console.log(user);
 
       if (response.ok) {
-        // Aqui, você pode tomar decisões com base nas informações do usuário recebidas do backend
         if (user.isAdmin) {
           navigate("/admin"); // Redirecione para o painel de administração, por exemplo
         } else {
